@@ -18,20 +18,32 @@ void delete (char s[], char s2[]) {
     printf("%s\n", s);
 }
 int searcher(char inpt_mas[], char sample) {
-    
+    for (unsigned short i = 0; i < strlen(inpt_mas); i++) {
+        if (isspace(inpt_mas[i])==0) {
+            //printf("qwerty %c \n",inpt_mas[i]);
+            if (inpt_mas[i] == sample) {
+                return (int)i;
+            }
+        }
+    }
+    return -1;
 }
 int main() {
     char str_sample[128];
     char str_enum[128];
     fgets(str_sample, 128, stdin);
     fgets(str_enum, 128, stdin);
-    int pointer;
+    int pointer=-1;
+    //char samp = getchar();
     for (unsigned char pos = 0; pos < strlen(str_sample); pos++) {
-        if (searcher(str_enum, str_sample[pos]) != -1) {
+        pointer = searcher(str_enum, str_sample[pos]);
+        if (pointer != -1) {
             printf("%d", pointer);
             break;
         }
     }
+    printf("%d", pointer);
+    //printf("%d UKAZATEL'", searcher(str_sample, samp));
     //delete(str, str1);
     //printf("%s\n", str);
     return 0;
