@@ -34,15 +34,20 @@ int main() {
     fgets(str_sample, 128, stdin);
     fgets(str_enum, 128, stdin);
     int pointer=-1;
+    unsigned char flag = 0;
     //char samp = getchar();
     for (unsigned char pos = 0; pos < strlen(str_sample); pos++) {
         pointer = searcher(str_enum, str_sample[pos]);
         if (pointer != -1) {
             printf("%d", pointer);
+            flag = 1;
             break;
         }
     }
-    printf("%d", pointer);
+    if (flag == 0) {
+        printf("-1");
+
+    }
     //printf("%d UKAZATEL'", searcher(str_sample, samp));
     //delete(str, str1);
     //printf("%s\n", str);
